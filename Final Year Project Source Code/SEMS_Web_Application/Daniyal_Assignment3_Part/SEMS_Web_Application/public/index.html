@@ -1,0 +1,127 @@
+<!-- Complete Project Details at: https://RandomNerdTutorials.com/ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Energy Meter App</title>
+
+    <!-- update the version number as needed -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+
+    <!-- include only the Firebase features as you need -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script>
+     // REPLACE WITH YOUR web app's Firebase configuration
+     const firebaseConfig = {
+      apiKey: "AIzaSyCkHhmpCFkGPT0hESU_YuFwGNr7toAqFqg",
+      authDomain: "iot-based-smart-energy-m-e640c.firebaseapp.com",
+      databaseURL: "https://iot-based-smart-energy-m-e640c-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "iot-based-smart-energy-m-e640c",
+      storageBucket: "iot-based-smart-energy-m-e640c.appspot.com",
+      messagingSenderId: "535835315610",
+      appId: "1:535835315610:web:5ff14fefa4cb2f5b3e3e23"
+    };
+
+      // Initialize firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Make auth and database references
+      const auth = firebase.auth();
+      const db = firebase.database();
+
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <!--TOP BAR-->
+  <div class="topnav">
+    <h1>Smart Energy Meter App <i class="fas fa-lightbulb"></i></h1>
+  </div>
+
+  <!--AUTHENTICATION BAR (USER DETAILS/LOGOUT BUTTON)-->
+  <div id="authentication-bar" style="display: none;">
+    <p><span id="authentication-status">User logged in</span>
+       <span id="user-details">USEREMAIL</span>
+       <a href="/" id="logout-link">(logout)</a>
+    </p>
+  </div>
+
+  <!--LOGIN FORM-->
+  <form id="login-form" style="display: none;">
+    <div class="form-elements-container">
+      <label for="input-email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Username" id="input-email" required>
+
+      <label for="input-password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="input-password" required>
+
+      <button type="submit" id="login-button">Login</button>
+      <p id="error-message" style="color:red;"></p>
+    </div>
+  </form>
+
+  <!--CONTENT (SENSOR READINGS)-->
+  <div class="content-sign-in" id="content-sign-in" style="display: none;">
+    <div class="cards">
+      <!--Input Voltages-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> INPUT VOLTAGE</p>
+        <p><span class="reading"><span id="voltage"></span> V</span></p>
+      </div>
+      <!--Load Current-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> CURRENT</p>
+        <p><span class="reading"><span id="current"></span> A</span></p>
+      </div>
+      <!--Real Power-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> REALPOWER</p>
+        <p><span class="reading"><span id="real"></span> W</span></p>
+      </div>
+      <!--Reactive Power-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> REACTIVE POWER</p>
+        <p><span class="reading"><span id="reactive"></span> VAR</span></p>
+      </div>
+      <!--Apparent Power-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> APPARENT POWER</p>
+        <p><span class="reading"><span id="apparent"></span> VA</span></p>
+      </div>
+      <!--Power Factor-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> POWER FACTOR</p>
+        <p><span class="reading"><span id="factor"></span> </span></p>
+      </div>
+      <!--Units_line-1-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> UNITS OF LINE1</p>
+        <p><span class="reading"><span id="unit_1"></span> kWh</span></p>
+      </div>
+      <!--Units_line-2-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> UNITS OF LINE2</p>
+        <p><span class="reading"><span id="unit_2"></span> kWh</span></p>
+      </div>
+      <!--Bill_line-1-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> BILL OF LINE1</p>
+        <p><span class="reading"><span id="bill_1"></span> Rs</span></p>
+      </div>
+      <!--Bill_line-2-->
+      <div class="card">
+        <p><i class="fas fa-cloud-upload-alt" style="color:#39740a;"></i> BILL OF LINE2</p>
+        <p><span class="reading"><span id="bill_2"></span> Rs</span></p>
+      </div>
+    </div>
+  </div>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
